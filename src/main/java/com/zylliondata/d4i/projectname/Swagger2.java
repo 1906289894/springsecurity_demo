@@ -1,4 +1,4 @@
-package com.zylliondata.gdsp.gateway;
+package com.zylliondata.d4i.projectname;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -32,7 +32,7 @@ public class Swagger2 {
                 .termsOfServiceUrl("http://www.zylliondata.com/site/aboutUs")
                 .license("© 版权所有 2016 - 2019 中云开源数据（上海）有限公司保留一切权利")
                 .licenseUrl("http://www.zylliondata.com/site/aboutUs")
-                .version("3.6.2")
+                .version("1.0.0")
                 .build();
     }
 }

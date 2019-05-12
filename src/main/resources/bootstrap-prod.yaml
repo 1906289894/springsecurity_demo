@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    config:
+      uri: http://boot-config-server.d4i.svc:5273/
+      label: 'master'
+      profile: 'prod'
+      name: 'd4i-config'

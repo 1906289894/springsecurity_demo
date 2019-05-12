@@ -1,0 +1,11 @@
+server:
+  port: 5273
+spring:
+  application:
+    name: PROJECT_NAME
+  data:
+    mongodb:
+      uri: ${mongodb.uri}
+  jackson:
+    serialization:
+      INDENT_OUTPUT: true
