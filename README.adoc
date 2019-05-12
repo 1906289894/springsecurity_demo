@@ -1,0 +1,12 @@
+[[_title]]
+= 微服务模板
+
+文档地址：link:http://d4i.pages.zylliondata.local/PROJECT_NAME[]
+
+初始化：
+
+[source,bash]
+.cURL
+----
+sed -i 's/PROJECT_NAME/xxx/g' *
+----
