@@ -22,6 +22,13 @@ edge:
   only:
     - "1.0"
 
+dev:
+  stage: dev
+  script:
+    - OCP_PROJECT=d4i-dev ocp-build
+  only:
+    - "dev"
+
 release:
   stage: release
   script:
