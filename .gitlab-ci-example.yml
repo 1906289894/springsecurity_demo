@@ -1,5 +1,6 @@
 stages:
   - edge
+  - dev
   - release
   - pages
 
