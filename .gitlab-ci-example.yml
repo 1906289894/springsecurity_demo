@@ -1,7 +1,5 @@
 stages:
   - edge
-  - dev
-  - release
   - pages
 
 pages:
@@ -13,26 +11,11 @@ pages:
   artifacts:
     paths:
       - public
-  only:
-    - "1.0"
 
 edge:
   stage: edge
   script:
     - OCP_PROJECT=d4i-edge ocp-build
-  only:
-    - "1.0"
-
-dev:
-  stage: dev
-  script:
-    - OCP_PROJECT=d4i-dev ocp-build
+    - OCP_PROJECT=d4i-edge-admin ocp-build
   only:
     - "dev"
-
-release:
-  stage: release
-  script:
-    - OCP_PROJECT=d4i ocp-build
-  only:
-    - "master"

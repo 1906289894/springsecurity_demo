@@ -1,7 +1,34 @@
 [[_title]]
-= 使用帮助
+= 开发帮助
 
-开发环境搭建：
+[[_env]]
+== 开发环境
 
+- Windows 10 / Max OS X / Fedora 30
+- Jetbrains IntelliJ IDEA
 - OpenJDK 11
+- Maven 3.6
 - Docker
+
+[[_build]]
+== 构建
+
+设置两个环境变量：
+
+
+[source,bash]
+----
+# 激活的Spring环境
+SPRING_PROFILES_ACTIVE=test
+# OAuth 2 服务的访问地址
+UAA_ENDPOINT=http://d4i.edge.zylliondata.local
+----
+
+使用IDEA运行项目的主类，或通过 Maven 运行：
+
+[source,bash]
+----
+mvn spring-boot:run
+----
+
+在浏览器中访问 link:http://localhost:5273[] 地址。
