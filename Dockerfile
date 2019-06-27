@@ -4,11 +4,7 @@ WORKDIR /opt/app
 ENV HOME /opt/app
 ADD . /opt/app
 
-RUN mvn -B clean package && mv target/app.jar app.jar \
-    && mvn -B clean && rm -rf ~/.m2/ src/ /bin/mvn /opt/apache-maven* \
-    && yum autoremove -y \
-    && yum clean all && rm -rf /tmp/* && rm -rf /usr/share/doc/ && rm -rf /usr/share/man \
-    && curl http://nexus.zylliondata.local/repository/maven-central/co/elastic/apm/elastic-apm-agent/1.7.0/elastic-apm-agent-1.7.0.jar > /opt/app/apm-agent.jar
+RUN curl http://nexus.zylliondata.local/repository/res/boot-maven.sh | bash
 
 USER 1001
 EXPOSE 5273
