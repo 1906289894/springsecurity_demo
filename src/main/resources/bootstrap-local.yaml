@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    config:
+      uri: http://d4i-config.edge.zylliondata.local/
+      label: 'dev'
+      profile: 'local'
+      name: 'd4i-config'
