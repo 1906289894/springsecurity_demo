@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.zylliondata.base</groupId>
         <artifactId>spring-base</artifactId>
-        <version>2.1.6.RELEASE</version>
+        <version>2.1.7.RELEASE</version>
     </parent>
     <groupId>com.zylliondata.d4i</groupId>
     <artifactId>PROJECT_NAME</artifactId>
