@@ -4,8 +4,8 @@ services:
   spring:
     build:
       context: .
-    image: PROJECT_NAME:1.0.0
+    image: PROJECT_NAME:0.1.5
     environment:
-      - SPRING_PROFILES_ACTIVE=dev
+      - SPRING_PROFILES_ACTIVE=local
     ports:
       - 5273:5273

@@ -10,6 +10,8 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 
+import java.time.LocalDateTime;
+
 @Configuration
 @EnableSwagger2WebMvc
 public class Swagger2 {
@@ -30,9 +32,9 @@ public class Swagger2 {
                 .title("微服务网关")
                 .description("代理访问所有微服务。")
                 .termsOfServiceUrl("http://www.zylliondata.com/site/aboutUs")
-                .license("© 版权所有 2016 - 2019 中云开源数据（上海）有限公司保留一切权利")
+                .license("© 版权所有 2016 - " + LocalDateTime.now().getYear() + " 中云开源数据（上海）有限公司保留一切权利")
                 .licenseUrl("http://www.zylliondata.com/site/aboutUs")
-                .version("1.0.0")
+                .version("0.1.5")
                 .build();
     }
 }
