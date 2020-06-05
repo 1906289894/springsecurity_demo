@@ -1,34 +1,79 @@
-[[_title]]
 = 开发帮助
 
-[[_env]]
-== 开发环境
+== 环境准备
 
-- Windows 10 / Max OS X / Fedora 30
-- Jetbrains IntelliJ IDEA
-- OpenJDK 11
-- Maven 3.6
-- Docker
+本项目需要准备以下内容：
 
-[[_build]]
+. Windows 10 / Fedora 31
+. OpenJDK 11
+. Maven 3.6
+. Python 3.6
+
+下面将介绍 Java 环境在 Windows 上的安装方式：
+
+=== OpenJDK 与 Maven
+
+==== Windows
+
+公司电脑直接下载：link:http://vpn.zylliondata.local/exes/openjdk-11.0.2_windows-x64_bin.zip[] 文件与 link:https://mirrors.tuna.tsinghua.edu.cn/apache/maven/binaries/apache-maven-3.2.2-bin.zip[] 并解压到系统的任意位置。
+
+将解压出的文件的路径设置 Windows 的系统环境变量，如 `JAVA_HOME=D:\OpenJDK\11` 以及 `MVN_HOME=D:\maven-3`，并在 PATH 里新增一个 `%JAVA_HOME%/bin` 以及 `%MVN_HOME%/bin` 两个。
+
+在用户主目录下创建一个文件夹：`C:\Users\用户名\.m2`，将 link:http://nexus.zylliondata.local/repository/repos/settings.xml[] 保存到这个文件夹内。
+
+==== Linux
+
+运行如下命令即可：
+
+[source,bash]
+----
+dnf install maven openjdk11 -y
+mkdir -p ~/.m2/
+curl http://nexus.zylliondata.local/repository/repos/settings.xml > ~/.m2/settings.xml
+----
+
+=== Python
+
+==== Windows
+
+使用Chocolatey对Python进行安装。
+
+安装Chocolatey，管理员权限打开PowerShell，执行 `iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))` 安装chocolatey。
+
+安装完毕后，在PowerShell中执行 `choco install python3` 下载安装Python3，此处安装完成后，并不需要去配置Python环境变量，系统已经默认配置完毕。
+
+==== Linux
+
+运行如下命令即可：
+
+[source,bash]
+----
+dnf install python3
+pip3 install -i http://nexus.zylliondata.local/repository/tencent-proxy/pypi/simple --upgrade pip --trusted-host nexus.zylliondata.local
+pip3 config set global.index-url http://nexus.zylliondata.local/repository/tencent-proxy/pypi/simple
+pip3 config set install.trusted-host nexus.zylliondata.local
+----
+
 == 构建
 
 设置两个环境变量：
 
-
+.bash
 [source,bash]
 ----
-# 激活的Spring环境
-SPRING_PROFILES_ACTIVE=test
-# OAuth 2 服务的访问地址
-UAA_ENDPOINT=http://d4i.edge.zylliondata.local
+SPRING_PROFILES_ACTIVE=local # <1>
 ----
+<1> 激活的 Spring 环境。
 
-使用IDEA运行项目的主类，或通过 Maven 运行：
+使用 IDEA 运行项目的主类，或通过 Maven 运行：
 
+.bash
 [source,bash]
 ----
-mvn spring-boot:run
+mvn clean package # <1>
+mvn spring-boot:run # <2>
 ----
+<1> 代码跟新后检查构建情况。
+<2> 运行项目。
 
-在浏览器中访问 link:http://localhost:5273[] 地址。
+调试 API 将在 link:http://localhost:5273/swagger-ui.html[] 地址运行。
