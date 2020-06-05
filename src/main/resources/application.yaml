@@ -5,7 +5,7 @@ spring:
     name: PROJECT_NAME
   data:
     mongodb:
-      uri: ${mongodb.uri}
+      uri: ${mongodb.uri:mongodb://172.25.2.31:27017/start}
   jackson:
     serialization:
       INDENT_OUTPUT: true
