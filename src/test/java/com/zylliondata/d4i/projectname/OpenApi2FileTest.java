@@ -1,15 +1,12 @@
 package com.zylliondata.d4i.projectname;
 
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletResponse;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -24,29 +21,26 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @Slf4j
 @WebAppConfiguration
-@RunWith(SpringJUnit4ClassRunner.class)
-@AutoConfigureRestDocs(outputDir = "build/asciidoc/snippets")
-@SpringBootTest(classes = {ProjectApplication.class, Swagger2.class})
+@SpringBootTest(classes = {ProjectApplication.class})
 @AutoConfigureMockMvc
-public class Swagger2MarkupTest {
+class OpenApi2FileTest {
+
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    public void createSpringFoxSwaggerJson() throws Exception {
-        String outputDir = System.getProperty("io.springfox.staticdocs.outputDir");
-        MvcResult mvcResult = this.mockMvc.perform(get("/v2/api-docs")
-                .accept(MediaType.APPLICATION_JSON))
+    void createYaml() throws Exception {
+        MvcResult yamlResult = this.mockMvc.perform(get("/v3/api-docs.yaml")
+                .accept(MediaType.ALL))
                 .andExpect(status().isOk())
                 .andReturn();
 
-        MockHttpServletResponse response = mvcResult.getResponse();
+        MockHttpServletResponse response = yamlResult.getResponse();
         String swaggerJson = response.getContentAsString();
+        String outputDir = "target/openapi";
         Files.createDirectories(Paths.get(outputDir));
-        try (BufferedWriter writer = Files.newBufferedWriter(Paths.get(outputDir, "swagger.json"), StandardCharsets.UTF_8)) {
+        try (BufferedWriter writer = Files.newBufferedWriter(Paths.get(outputDir, "openapi.yaml"), StandardCharsets.UTF_8)) {
             writer.write(swaggerJson);
         }
     }
-
 }
-

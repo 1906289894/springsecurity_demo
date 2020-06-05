@@ -1,0 +1,19 @@
+{
+    "registry-mirrors": [
+        "http://registry.docker-cn.com",
+        "http://docker.mirrors.ustc.edu.cn",
+        "http://hub-mirror.c.163.com"
+    ],
+    "insecure-registries": [
+        "registry.docker-cn.com",
+        "docker.mirrors.ustc.edu.cn",
+        "registry.zylliondata.local",
+        "stack-2.sinocbd.local:5000",
+        "stack-2.zyllion.local:5000",
+        "172.25.254.52:5000",
+        "docker-proxy.zylliondata.local"
+    ],
+    "dns": [
+        "172.25.2.10"
+    ]
+}
