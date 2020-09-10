@@ -1,7 +1,0 @@
-spring:
-  cloud:
-    config:
-      uri: http://config-server:5273/
-      label: '1.0'
-      profile: 'edge'
-      name: 'd4i-config'
